@@ -18,6 +18,20 @@ public class Test { // 이것은 맵 생성과 캐릭터 생성을 위한 메인
                 " 이번 약탈이 평소와도 다를 바 없이, 안전하게 마무리되기를 빌며 가벼운 주머니에 몇 개 남지 않은 동화 한닢을 삼키며 " +
                 " 볼품없이 어색한 기도를 올립니다");
 
+
+        ((MovableCharacter) player).moveRight(gm);
+        ((MovableCharacter) player).moveRight(gm);
+        ((MovableCharacter) player).moveRight(gm);
+        ((MovableCharacter) player).moveRight(gm);
+        ((MovableCharacter) player).moveRight(gm);
+        ((MovableCharacter) player).moveLeft();
+        ((MovableCharacter) player).moveUpward(gm);
+        ((MovableCharacter) player).moveUpward(gm);
+        ((MovableCharacter) player).moveUpward(gm);
+        ((MovableCharacter) player).moveUpward(gm);
+        ((MovableCharacter) player).moveDownward();
+
+
         ((MovableCharacter) player).descend(gm);
         ((MovableCharacter) player).descend(gm);
         ((MovableCharacter) player).ascend(); // (질문). Cast Qualifier 를 왜 써야하나요? 이 구조가 잘 이해가 가지 않습니다.
