@@ -48,7 +48,7 @@ public class GameMap extends AbstractGameMap {
 
 
     @Override
-    public void generateAscendingRoom(List<GeneratedRoomEvent> eventRooms) { //  첫번째 층의 올라가는 방은 플레이어의 생성 / 출발 지점이다.
+    public void generateAscendingRoom(List<RoomEvent> eventRooms) { //  첫번째 층의 올라가는 방은 플레이어의 생성 / 출발 지점이다.
         int generatedGameMapRowIndex = 0; // 이벤트를 할당하기 위해 생성한 게임맵을 나타내는 행렬의 인덱스를 저장하는 변수들
         int generatedGameMapColumnIndex = 0;
 
@@ -81,7 +81,7 @@ public class GameMap extends AbstractGameMap {
     }
 
     @Override
-    public void generateEventRoom(List<GeneratedRoomEvent> eventRooms) {       // 이벤트를 좌표에 할당
+    public void generateEventRoom(List<RoomEvent> eventRooms) {       // 이벤트를 좌표에 할당
         int generatedGameMapRowIndex = 0;       // 이벤트를 할당하기 위해 생성한 게임맵을 나타내는 행렬의 인덱스를 저장하는 변수들
         int generatedGameMapColumnIndex = 0;
 

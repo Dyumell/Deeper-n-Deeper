@@ -97,15 +97,14 @@ public class Character extends AbstractEntity {
             }
         }
 
-        System.out.print(getEntityFloor() + " 층 , (" + getEntityRoomCoordinate().x + " , " +
+        System.out.print("지하"+getEntityFloor() + " 층 , (" + getEntityRoomCoordinate().x + " , " +
                 getEntityRoomCoordinate().y + ") 방의 이벤트 : ");
-
-        for (int i =0 ; i < currentExperiencingRoomEvents.size(); i++){
-            System.out.print(currentExperiencingRoomEvents.get(i).getRoomEventName());
-            if ( i < currentExperiencingRoomEvents.size() - 1){
-                System.out.print(". ");
-            }
+        StringJoiner stringJoiner = new StringJoiner(" ,");
+        // 마지막 요소에 대한 출력에서 , 를 생략하기 위한 방법을 찾던 도중 알게된 새로운 방법이다.
+        for (GeneratedRoomEvent currentRoomEvent : currentExperiencingRoomEvents) {
+            stringJoiner.add(currentRoomEvent.getRoomEventName());
         }
+        System.out.println(stringJoiner.toString());
 
     }
 

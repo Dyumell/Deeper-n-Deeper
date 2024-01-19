@@ -32,18 +32,18 @@ public abstract class AbstractGameMap {
                                                // 추가로 나중에 장애물을 생성하기 위한 변수/ 메서드도 구현하고싶음
 
 
-    private List<GeneratedRoomEvent> EventRooms;       // 방 좌표에 이벤트들을 저장할 사전 변수 ( 한방에 최대 3개 )
+    private List<RoomEvent> EventRooms;       // 방 좌표에 이벤트들을 저장할 사전 변수 ( 한방에 최대 3개 )
 
 
     public void generateDescendingRoom(){
 
     }
 
-    public void generateAscendingRoom(List<GeneratedRoomEvent> eventRooms){
+    public void generateAscendingRoom(List<RoomEvent> eventRooms){
 
     }
 
-    public void generateEventRoom(List<GeneratedRoomEvent> eventRooms){
+    public void generateEventRoom(List<RoomEvent> eventRooms){
 
     }
 
