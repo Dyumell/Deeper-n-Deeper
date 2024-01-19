@@ -29,7 +29,7 @@ public class GameMap extends AbstractGameMap {
                     setRandomlyGeneratedInteger(getRandomIntegerGenerator().nextInt(100) + 1); // 난수를 얻음 ( 1 ~ 100 )
 
                     if (getRandomlyGeneratedInteger() <= 5) {    // 각 좌표마다 난수를 구해서, 5%확률로 내려가는 방으로 지정
-                        getEventRooms().add(new RoomEvent
+                        getEventRooms().add(new GeneratedRoomEvent
                                 (getCurrentFloor(), new Point(generatedGameMapRowIndex, generatedGameMapColumnIndex),
                                         " 내려가는 이벤트 "));
                         setDescendingFloorCoordinate(new Point(generatedGameMapRowIndex,generatedGameMapColumnIndex));
@@ -48,7 +48,7 @@ public class GameMap extends AbstractGameMap {
 
 
     @Override
-    public void generateAscendingRoom(List<RoomEvent> eventRooms) { //  첫번째 층의 올라가는 방은 플레이어의 생성 / 출발 지점이다.
+    public void generateAscendingRoom(List<GeneratedRoomEvent> eventRooms) { //  첫번째 층의 올라가는 방은 플레이어의 생성 / 출발 지점이다.
         int generatedGameMapRowIndex = 0; // 이벤트를 할당하기 위해 생성한 게임맵을 나타내는 행렬의 인덱스를 저장하는 변수들
         int generatedGameMapColumnIndex = 0;
 
@@ -62,7 +62,7 @@ public class GameMap extends AbstractGameMap {
                     if (getRandomlyGeneratedInteger() <= 5) {    // 각 좌표마다   난수를 구해서, 5%확률로 내려가는 방으로 지정
                         setAscendingFloorCoordinate(new Point(generatedGameMapRowIndex,generatedGameMapColumnIndex));
                         if (!getDescendingFloorCoordinate().equals(getAscendingFloorCoordinate())); // 강사님 이거 되나요?
-                        getEventRooms().add(new RoomEvent
+                        getEventRooms().add(new GeneratedRoomEvent
                                 (getCurrentFloor(), new Point(generatedGameMapRowIndex, generatedGameMapColumnIndex),
                                         "올라가는 이벤트"));
                         return;    // 내려가는 방은 층마다 오직 하나로, 방이 정해지면 반복문을 탈출
@@ -81,7 +81,7 @@ public class GameMap extends AbstractGameMap {
     }
 
     @Override
-    public void generateEventRoom(List<RoomEvent> eventRooms) {       // 이벤트를 좌표에 할당
+    public void generateEventRoom(List<GeneratedRoomEvent> eventRooms) {       // 이벤트를 좌표에 할당
         int generatedGameMapRowIndex = 0;       // 이벤트를 할당하기 위해 생성한 게임맵을 나타내는 행렬의 인덱스를 저장하는 변수들
         int generatedGameMapColumnIndex = 0;
 
@@ -99,9 +99,9 @@ public class GameMap extends AbstractGameMap {
                 //region 일반 전투 이벤트 생성 조건
                 if (getRandomlyGeneratedInteger() >= 40) {   // 난수 돌려서 나온 값이 60이 넘을시 동작 (이벤트가 방에 할당될 확률 60%)
                     // 이벤트 할당
-                    getEventRooms().add(new RoomEvent
+                    getEventRooms().add(new GeneratedRoomEvent
                             (getCurrentFloor(), new Point(generatedGameMapRowIndex, generatedGameMapColumnIndex),
-                                    " 일반 전투 이벤트"));
+                                    "일반 전투 이벤트"));
                     // 일반 전투 이벤트를 조건을 통과한 좌표에 할당
                 }
                 //endregion
@@ -111,9 +111,9 @@ public class GameMap extends AbstractGameMap {
                 //region 텍스트 출력 이벤트 생성 조건
                 if (getRandomlyGeneratedInteger() >= 60) { // 이벤트 2개가 방에 할당될 확률 (60% x 40%)
                     // 이벤트 할당
-                    getEventRooms().add(new RoomEvent
+                    getEventRooms().add(new GeneratedRoomEvent
                             (getCurrentFloor(), new Point(generatedGameMapRowIndex, generatedGameMapColumnIndex),
-                                    " 텍스트 출력 이벤트"));
+                                    "텍스트 출력 이벤트"));
                     // 텍스트 출력 이벤트를 조건을 통과한 좌표에 할당
                 }
                 //endregion
@@ -122,19 +122,19 @@ public class GameMap extends AbstractGameMap {
 
                 //region 스텟 상승 / 하락 이벤트 생성 조건
                 if (getRandomlyGeneratedInteger() >= 70) {  // 이벤트 3개가 방에 할당될 확률 (60% x 40% x 20% )
-                    setRandomlyGeneratedInteger(getRandomIntegerGenerator().nextInt(100) + 1);
+
                     // 이벤트 할당
-                    getEventRooms().add(new RoomEvent
+                    getEventRooms().add(new GeneratedRoomEvent
                             (getCurrentFloor(), new Point(generatedGameMapRowIndex, generatedGameMapColumnIndex),
-                                    " 스텟 상승 이벤트"));
+                                    EventRandomizer.RandomizeEvent() + "_Increase_Event"));
                     // 스텟 상승 이벤트를 조건을 통과한 좌표에 할당
                 } else { // 스텟 상승 이벤트 조건을 좌표가 할당 받지 못한 경우, 스텟 하강 이벤트 할당 조건을 거치게된다.
                     setRandomlyGeneratedInteger(getRandomIntegerGenerator().nextInt(100) + 1);
                     if (getRandomlyGeneratedInteger() >= 85) { // 이벤트 3개가 방에 할당될 또 다른 확률 (60% x 40% x 20% x 15% )
                         // 이벤트 할당
-                        getEventRooms().add(new RoomEvent
+                        getEventRooms().add(new GeneratedRoomEvent
                                 (getCurrentFloor(), new Point(generatedGameMapRowIndex, generatedGameMapColumnIndex),
-                                        " 스텟 하락 이벤트"));
+                                        EventRandomizer.RandomizeEvent() + "_Increase_Event"));
                         // 스텟 하락 이벤트 조건을 통과한 좌표에 할당
                     }
                 } // 스텟 하락 이벤트

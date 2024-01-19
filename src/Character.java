@@ -1,6 +1,9 @@
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.*;
+import java.util.StringJoiner;
 
 @Data
 public class Character extends AbstractEntity {
@@ -30,7 +33,10 @@ public class Character extends AbstractEntity {
     private int luck;
     //endregion -------- 기술 능력치  -----------
 
-    public Character(String name,String species, String className){
+    // 방에 들어간 캐릭터가 겪을 이벤트를 저장하는 변수
+    List<GeneratedRoomEvent> currentExperiencingRoomEvents = new ArrayList<>(); // 삽입과 삭제가 잦을 것
+
+    public Character(String name, String species, String className) {
         // 캐릭터가 생성될 때 가지는 능력치들
 
         // 캐릭터 기본 정보
@@ -57,19 +63,23 @@ public class Character extends AbstractEntity {
     }
 
     //region 기본 능력치 설정 메서드
-    public void adjustHealthPoint(){
+    public void adjustHealthPoint() {
         this.healthPoint += (20 * this.vigor);
-    };
-    public void adjustManaPoint(){
+    }
+
+    ;
+
+    public void adjustManaPoint() {
         this.manaPoint += (15 * this.mind);
     }
-    public void adjustEndurancePoint(){
+
+    public void adjustEndurancePoint() {
         this.endurancePoint += (20 * this.endurance);
     }
 
     //endregion
 
-    void loadCharacterToGameMapCoordinate(GameMap gameMap) {
+    public void loadCharacterToGameMapCoordinate(GameMap gameMap) {
         // 캐릭터는 층을 내려가면서 이동한다. 즉 아랫층의 올라가는 방은 캐럭터가 내려온 방이 된다.
         // 그럼으로 올라가는 방의 좌표에 캐릭터가 위치하게 된다.
         setEntityRoomCoordinate(gameMap.getAscendingFloorCoordinate());
@@ -79,7 +89,25 @@ public class Character extends AbstractEntity {
         // 이 게임은 아래로 내려가는 게임이기 떄문임
     }
 
+    public void experienceEvent(List<GeneratedRoomEvent> generatedRoomEvents) { // 이벤트 있는 좌표에 캐릭터가 들어오면, 해당 이벤드를 반납해서 여기 함수의 매개변수로 사용해보자.
+        for (GeneratedRoomEvent generatedRoomEvent : generatedRoomEvents)   // 향상된 for 문으로 리스트의 요소에 대한  순회를 시작
+        {                                                                    // for 문이 되게 많은데, 메인 메서드에서는 반복문을 잘 안쓴다고 한다. 여기서 많이 쓰도록 하자
+            if (generatedRoomEvent.getEventRoomCoordinate().equals(getEntityRoomCoordinate())) {
+                currentExperiencingRoomEvents.add(generatedRoomEvent);
+            }
+        }
 
+        System.out.print(getEntityFloor() + " 층 , (" + getEntityRoomCoordinate().x + " , " +
+                getEntityRoomCoordinate().y + ") 방의 이벤트 : ");
+
+        for (int i =0 ; i < currentExperiencingRoomEvents.size(); i++){
+            System.out.print(currentExperiencingRoomEvents.get(i).getRoomEventName());
+            if ( i < currentExperiencingRoomEvents.size() - 1){
+                System.out.print(". ");
+            }
+        }
+
+    }
 
     @Override
     public String toString() {
