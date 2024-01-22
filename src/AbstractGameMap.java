@@ -35,7 +35,7 @@ public abstract class AbstractGameMap {
     private List<GeneratedRoomEvent> EventRooms;       // 방 좌표에 이벤트들을 저장할 사전 변수 ( 한방에 최대 3개 )
 
 
-    public void generateDescendingRoom(){
+    public void generateDescendingRoom(int eventGeneratingFloor){
 
     }
 

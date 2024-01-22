@@ -1,6 +1,15 @@
 public class CharacterStatChanger {
     public static void increaseCharacterStat(Character character, String statName, int increment) {
         switch (statName) {
+            case "HealthPoint":
+                character.setHealthPoint(character.getHealthPoint() + increment);
+                break;
+            case "ManaPoint":
+                character.setManaPoint(character.getManaPoint() + increment);
+                break;
+            case "EndurancePoint":
+                character.setEndurancePoint(character.getExperiencePoint()+increment);
+                break;
             case "Vigor":
                 character.setVigor(character.getVigor() + increment);
                 break;
@@ -39,44 +48,62 @@ public class CharacterStatChanger {
 
     public static void decreaseCharacterStat(Character character, String statName, int decrement) {
         switch (statName) {
+            case "HealthPoint":
+                character.setHealthPoint(character.getHealthPoint() - decrement);
+                break;
+            case "ManaPoint":
+                character.setManaPoint(character.getManaPoint() - decrement);
+                break;
+            case "EndurancePoint":
+                character.setEndurancePoint(character.getExperiencePoint() - decrement);
+                break;
             case "Vigor":
-                character.setVigor(character.getVigor() + decrement);
+                character.setVigor(character.getVigor() - decrement);
                 break;
             case "Mind":
-                character.setMind(character.getMind() + decrement);
+                character.setMind(character.getMind() - decrement);
                 break;
             case "Endurance":
-                character.setEndurance(character.getEndurance() + decrement);
+                character.setEndurance(character.getEndurance() - decrement);
                 break;
             case "Strength":
-                character.setStrength(character.getStrength() + decrement);
+                character.setStrength(character.getStrength() - decrement);
                 break;
             case "Dexterity":
-                character.setDexterity(character.getDexterity() + decrement);
+                character.setDexterity(character.getDexterity() - decrement);
                 break;
             case "Agility":
-                character.setAgility(character.getAgility() + decrement);
+                character.setAgility(character.getAgility() - decrement);
                 break;
             case "Magic":
-                character.setMagic(character.getMagic() + decrement);
+                character.setMagic(character.getMagic() - decrement);
                 break;
             case "Faith":
-                character.setFaith(character.getFaith() + decrement);
+                character.setFaith(character.getFaith() - decrement);
                 break;
             case "Luck":
-                character.setLuck(character.getLuck() + decrement);
+                character.setLuck(character.getLuck() - decrement);
                 break;
             case "ExperiencePoint":
-                character.setExperiencePoint(character.getExperiencePoint() + decrement);
+                character.setExperiencePoint(character.getExperiencePoint() - decrement);
                 break;
             case "Level":
-                character.setLevel(character.getLevel() + decrement);
+                character.setLevel(character.getLevel() - decrement);
                 break;
         }
     }
 
     public static void initializeCharacterStat(Character character, String statName, int initializingValue) {
         switch (statName) {
+            case "HealthPoint":
+                character.setHealthPoint(initializingValue);
+                break;
+            case "ManaPoint":
+                character.setManaPoint(initializingValue);
+                break;
+            case "EndurancePoint":
+                character.setEndurancePoint(initializingValue);
+                break;
             case "Vigor":
                 character.setVigor(initializingValue);
                 break;

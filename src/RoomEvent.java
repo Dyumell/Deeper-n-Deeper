@@ -33,12 +33,18 @@ public class RoomEvent extends AbstractRoomEvent{
         roomEventCodex.put("Vigor_decrease_Event",new RoomEvent("활력 감소 이벤트",
                 "Vigor - 1",
                 "어두운 그림자가 " + character.getEntityName() + "을 애워싼다, 활력이 1 감소한다"));
+        roomEventCodex.put("Endurance_Increase_Event", new RoomEvent("지구력 상승 이벤트",
+                "Endurance + 1",
+                "신비한 빛이" + character.getEntityName() + "을 감싼다, 지구력이 1 상승한다"));
+        roomEventCodex.put("Endurance_Decrease_Event", new RoomEvent("지구력 상승 이벤트",
+                "Endurance - 1",
+                "어두운 그림자가 " + character.getEntityName() + "을 애워싼다, 지구력이 1 감소한다"));
         roomEventCodex.put("Mind_Increase_Event",new RoomEvent("정신력 상승 이벤트",
                 "Mind + 1",
-                "신비한 빛이 " + character.getEntityName() + "을 감싼다, 활력이 1 상승한다"));
+                "신비한 빛이 " + character.getEntityName() + "을 감싼다, 정신력이 1 상승한다"));
         roomEventCodex.put("Mind_Decrease_Event",new RoomEvent("정신력 감소 이벤트",
                 "Mind - 1",
-                "어두운 그림자가 "+ character.getEntityName() +"을 애워싼다, 활력이 1 감소한다"));
+                "어두운 그림자가 "+ character.getEntityName() +"을 애워싼다, 정신력이 1 감소한다"));
         roomEventCodex.put("Strength_Increase_Event",new RoomEvent("근력 상승 이벤트",
                 "Strength + 1",
                 "신비한 빛이 " + character.getEntityName() + "을 감싼다, 근력이 1 상승한다"));
@@ -47,16 +53,16 @@ public class RoomEvent extends AbstractRoomEvent{
                 "어두운 그림자가 " + character.getEntityName() + "을 애워싼다, 근력이 1 감소한다"));
         roomEventCodex.put("Dexterity_Increase_Event",new RoomEvent("기교 상승 이벤트",
                 "Dexterity + 1",
-                "어두운 그림자가 " + character.getEntityName() + "을 애워싼다, 기교가 1 감소한다"));
+                "어두운 그림자가 " + character.getEntityName() + "을 애워싼다, 기교가 1 상승한다"));
         roomEventCodex.put("Dexterity_Decrease_Event",new RoomEvent("기교 감소 이벤트",
                 "Dexterity - 1",
                 "어두운 그림자가 " + character.getEntityName() + "을 애워싼다, 기교가 1 감소한다"));
         roomEventCodex.put("Agility_Increase_Event",new RoomEvent("민첩 상승 이벤트",
                 "Agility + 1",
-                "신비한 빛이 " + character.getEntityName() + "을 감싼다, 근력이 1 상승한다"));
+                "신비한 빛이 " + character.getEntityName() + "을 감싼다, 민첩이 1 상승한다"));
         roomEventCodex.put("Agility_Decrease_Event",new RoomEvent("민첩 감소 이벤트",
                 "Agility - 1",
-                "어두운 그림자가 " + character.getEntityName() + "을 애워싼다, 근력이 1 감소한다"));
+                "어두운 그림자가 " + character.getEntityName() + "을 애워싼다, 민첩이 1 감소한다"));
         roomEventCodex.put("Magic_Increase_Event",new RoomEvent("마력 상승 이벤트",
                 "Magic + 1",
                 "어두운 그림자가 " + character.getEntityName() + "을 애워싼다, 마력이 1 감소한다"));
@@ -81,6 +87,8 @@ public class RoomEvent extends AbstractRoomEvent{
         roomEventCodex.put("Boss_Battle_Event",new RoomEvent("보스 전투 이벤트",
                 "Boss Battle",
                 "보스 전투 진입"));
+        roomEventCodex.put("Text_Printed_Event",new RoomEvent("텍스트 출력 이벤트","텍스트 출력 이벤트다",
+                "Text"));
     }
     @Override
     public String toString() {

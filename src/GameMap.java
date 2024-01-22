@@ -4,9 +4,9 @@ import java.util.Random;
 import java.util.List;
 
 public class GameMap extends AbstractGameMap {
-    public GameMap(int maxFloor, int roomRow, int roomColumn) {
+    public GameMap(int currentFloor,int maxFloor, int roomRow, int roomColumn) {
         setLastFloor(maxFloor);
-        setCurrentFloor(getLastFloor());
+        setCurrentFloor(currentFloor);
         setMapCoordinateArray(new int[roomRow][roomColumn]); // 맵 전체에 대한 좌표를 생성
         setGameMapRowIndex(roomRow); // 이벤트를 향상된 for 문으로 할당할 때, 행의 최대값이 넘어가면 행 index 값을 0으로
         // 초기화 하기위한 게임맵 최대 행의 인덱스 변수
@@ -14,7 +14,7 @@ public class GameMap extends AbstractGameMap {
     }
 
     @Override
-    public void generateDescendingRoom() {
+    public void generateDescendingRoom(int generatingEventFloor) {
         int generatedGameMapRowIndex = 0; // 이벤트를 할당하기 위해 생성한 게임맵을 나타내는 행렬의 인덱스를 저장하는 변수들
         int generatedGameMapColumnIndex = 0;
 
